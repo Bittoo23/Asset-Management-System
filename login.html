@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="contain">
+    <h2 class="main-heading">Login</h2>
+    <form action="login.php" method="post">
+        <div class="form-group">
+            <label for="username" >Username:</label>
+            <input type="text" id="username" name="username" required >
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required >
+        </div>
+        <button type="submit" class="submit-btn1" >Login</button>
+    </form>
+    <style>
+        .contain {
+            
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 150px;
+            margin-bottom: 150px;
+            margin-left: 40%;
+            margin-right: 40%;
+        }
+        .submit-btn1 {
+            padding: 10px 20px;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 0;
+            display: grid;
+            place-items: center;
+        }
+        .submit-btn1:hover {
+            background: #4389d4;
+        }   
+    </style>
+    
+    <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+</div>
+</body>
+</html>

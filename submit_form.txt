@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="banner"><a href="http://localhost/_Project/Asset%20Register/land.html">
+        <h1 style="display: inline-block;">CSIR - National Institute of Science Communication and Policy Research</h1>
+    </a>    
+    </div>
+    <div class="container">
+        <h2 class="main-heading">Submitted!!</h2>
+        <?php
+// Error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Check if form data is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Database connection settings
+    $servername = "localhost"; // Replace with your server name if different
+    $username = "root"; // Replace with your database username
+    $password = ""; // Replace with your database password
+    $dbname = "assets"; // Replace with your database name
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and bind SQL statement
+    $stmt = $conn->prepare("INSERT INTO asset_entry (startDate, openingBalance, institutionType, transactionDate, particularsAsset, supplierName, supplierAddress, billNo, billDate, additions, deductions, billUpload) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    // Check if statement preparation was successful
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    // Bind parameters
+    $stmt->bind_param("sdssssssssds", $startDate, $openingBalance, $institutionType, $transactionDate, $particularsAsset, $supplierName, $supplierAddress, $billNo, $billDate, $additions, $deductions, $billUpload);
+
+    // Set common parameters from POST data
+    $startDate = $_POST['startDate'];
+    $openingBalance = $_POST['openingBalance'];
+    $institutionType = $_POST['institutionType'];
+
+    // Loop through each entry
+    $entriesCount = count($_POST['transactionDate']);
+    for ($i = 0; $i < $entriesCount; $i++) {
+        $transactionDate = $_POST['transactionDate'][$i];
+        $particularsAsset = $_POST['particularsAsset'][$i];
+        $supplierName = $_POST['supplierName'][$i];
+        $supplierAddress = $_POST['supplierAddress'][$i];
+        $billNo = $_POST['billNo'][$i];
+        $billDate = $_POST['billDate'][$i];
+        $additions = $_POST['additions'][$i];
+        $deductions = $_POST['deductions'][$i];
+
+        // Handle file upload (if any)
+        $billUpload = "";
+        if ($_FILES['billUpload']['error'][$i] == 0) {
+            $uploadDir = 'uploads/'; // Directory where files will be uploaded
+            $uploadFile = $uploadDir . basename($_FILES['billUpload']['name'][$i]);
+            if (move_uploaded_file($_FILES['billUpload']['tmp_name'][$i], $uploadFile)) {
+                $billUpload = $uploadFile;
+            } else {
+                die("File upload failed.");
+            }
+        }
+
+
+        // Execute SQL statement for each entry
+        if ($stmt->execute()) {
+            echo "Entry " . ($i + 1) . " Registered Successfully<br>";
+        } else {
+            echo "Error: " . $stmt->error . "<br>";
+        }
+    }
+
+    // Close statement and database connection
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "Form data not submitted.";
+}
+echo "
+<style>
+    .enter{
+        padding: 10px 20px;
+        color: #fff;
+        background: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px 0;
+        position: relative;
+        
+    }
+</style>
+";
+// echo " <a href='http://localhost/_Project/Asset%20Register/asset.html'> <button class = 'enter'>Enter Again</button> </a> " ;
+// echo " <a href='http://localhost/_Project/Asset%20Register/report.html'><button class = 'enter' style ='left :50px;'>View Report</button></a> " ;
+
+?>
+
+<br><br>
+<a href='http://localhost/_Project/Asset%20Register/asset.html'><button class = 'enter' style = "align-content:center;">Enter Again</button></a>
+<a href='http://localhost/_Project/Asset%20Register/report.html'><button class = 'enter' style = "align-content:center;">View Report</button></a>
+
+    </div>    
+        
+</body>
+</html>
+

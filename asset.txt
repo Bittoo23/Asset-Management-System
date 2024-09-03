@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NKRC Asset Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="banner"><a href="http://localhost/_Project/Asset%20Register/land.html">
+        <h1 style="display: inline-block;">CSIR - National Institute of Science Communication and Policy Research</h1>
+    </a>    
+    </div>
+    
+    
+    <div class="container">
+        <h2 class="main-heading">Register of Fixed Assets</h2>
+        <br>
+        <p class="description">Please fill up the following details to generate the NKRC ASSET REGISTER</p><br>
+        <form id="assetRegisterForm" action="submit_form.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" >
+            </div>
+            <div class="form-group">
+                <label for="openingBalance">Opening Balance:</label>
+                <input type="number" id="openingBalance" name="openingBalance" step="0.01" >
+            </div>
+            <div class="form-group">
+                <label for="institutionType">Type of Institution:</label>
+                <select id="institutionType" name="institutionType" >
+                    <option value="CSIR">CSIR</option>
+                    <option value="DST">DST</option>
+                    <option value="MOES">MOES Lab</option>
+                </select>
+            </div>
+            <div id="entries">
+                <div class="entry">
+                    <h3>Entry No 1</h3>
+                    <div class="form-group">
+                        <label for="transactionDate1">Transaction Date:</label>
+                        <input type="date" id="transactionDate1" name="transactionDate[]" >
+                    </div>
+                    <div class="form-group">
+                        <label for="particularsAsset1">Particulars of Asset:</label>
+                        <input type="text" id="particularsAsset1" name="particularsAsset[]" >
+                    </div>
+                    <div class="form-group">
+                        <h4>Particulars of Suppliers</h4>
+                        <label for="supplierName1">Name:</label>
+                        <input type="text" id="supplierName1" name="supplierName[]" >
+                        <label for="supplierAddress1">Address:</label>
+                        <input type="text" id="supplierAddress1" name="supplierAddress[]">
+                        <label for="billNo1">Bill No.:</label>
+                        <input type="text" id="billNo1" name="billNo[]" >
+                        <label for="billDate1">Bill Date:</label>
+                        <input type="date" id="billDate1" name="billDate[]" >
+                    </div>
+                    <div class="form-group">
+                        <h4>Cost of Asset</h4>
+                        <label for="additions1">Additions:</label>
+                        <input type="number" id="additions1" name="additions[]" step="0.01">
+                        <label for="deductions1">Deductions:</label>
+                        <input type="number" id="deductions1" name="deductions[]" step="0.01">
+                    </div>
+                    
+                    <div class="form-group">
+                        <b><label for="document">Upload Corresponding Documents</label></b>
+                        <div id="docs1" class="docs-container">
+                          <div class="document-upload" style="display: inline;">
+                            <p>
+                              Document Title: <input type="text" id="documentTitle1" name="documentTitle1[]" style="width: 15%;">
+                              <input type="file" id="documentUpload1" name="documentUpload1[]" accept="application/pdf" style="width: 20%;">
+                            </p>
+                          </div>
+                        </div>
+                        <button type="button" class="add-more-doc-btn" onclick="addDocumentEntry(1)">Add More</button>
+                      </div>
+                </div>
+            </div>
+            <button type="button" class="add-more-btn" onclick="addEntry()">Add More</button>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,874 @@
+as you know about my project i am working on the webpage , a land page named as land.html as follows <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Register Report</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+.squares {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.square {
+    width: 300px;
+    height: 200px;
+    background: #e3f2fd;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.square-left {
+    background: #d1c4e9;
+}
+
+.square-right {
+    background: #c8e6c9;
+}
+
+.square:hover {
+    transform: scale(1.05);
+}
+
+.square-content h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.square:hover {
+    background: #bbdefb;
+}
+
+.square-left:hover {
+    background: #b39ddb;
+}
+
+.square-right:hover {
+    background: #a5d6a7;
+}
+
+footer {
+    background-color: #002147;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>CSIR - National Institute of Science Communication and Policy Research</h1>
+        
+    </div>
+    <br><br><br><br><br>
+    <div class="container">
+        
+        <h2 class="main-heading" style="font-size: 40px;color: #b96161;">Welcome to the Asset Management System</h2>
+        <div class="squares">
+            <a href="http://localhost/_Project/Asset%20Register/asset.html" class="square square-left">
+                <div class="square-content">
+                    <h3>To Register Data into the Asset Register</h3>
+                </div>
+            </a>
+            <a href="http://localhost/_Project/Asset%20Register/report.html" class="square square-right">
+                <div class="square-content">
+                    <h3>To Generate the Asset Report</h3>
+                </div>
+            </a>
+            <br><br><br><br><br><br><br>
+        </div>
+    </div>
+</body>
+</html>
+, there are two options to register into the database which sends us to the forms made by asset.html as <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NKRC Asset Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="banner"><a href="http://localhost/_Project/Asset%20Register/land.html">
+        <h1 style="display: inline-block;">CSIR - National Institute of Science Communication and Policy Research</h1>
+    </a>    
+    </div>
+    
+    <div class="container">
+        <h2 class="main-heading">Register of Fixed Assets</h2>
+        <br>
+        <p class="description">Please fill up the following details to generate the NKRC ASSET REGISTER</p><br>
+        <form id="assetRegisterForm" action="submit_form.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate">
+            </div>
+            <div class="form-group">
+                <label for="openingBalance">Opening Balance:</label>
+                <input type="number" id="openingBalance" name="openingBalance" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="institutionType">Type of Institution:</label>
+                <select id="institutionType" name="institutionType">
+                    <option value="CSIR">CSIR</option>
+                    <option value="DST">DST</option>
+                    <option value="MOES">MOES Lab</option>
+                </select>
+            </div>
+            <div id="entries">
+                <div class="entry">
+                    <h3>Entry No 1</h3>
+                    <div class="form-group">
+                        <label for="transactionDate1">Transaction Date:</label>
+                        <input type="date" id="transactionDate1" name="transactionDate[]">
+                    </div>
+                    <div class="form-group">
+                        <label for="particularsAsset1">Particulars of Asset:</label>
+                        <input type="text" id="particularsAsset1" name="particularsAsset[]">
+                    </div>
+                    <div class="form-group">
+                        <h4>Particulars of Suppliers</h4>
+                        <label for="supplierName1">Name:</label>
+                        <input type="text" id="supplierName1" name="supplierName[]">
+                        <label for="supplierAddress1">Address:</label>
+                        <input type="text" id="supplierAddress1" name="supplierAddress[]">
+                        <label for="billNo1">Bill No.:</label>
+                        <input type="text" id="billNo1" name="billNo[]">
+                        <label for="billDate1">Bill Date:</label>
+                        <input type="date" id="billDate1" name="billDate[]">
+                    </div>
+                    <div class="form-group">
+                        <h4>Cost of Asset</h4>
+                        <label for="additions1">Additions:</label>
+                        <input type="number" id="additions1" name="additions[]" step="0.01">
+                        <label for="deductions1">Deductions:</label>
+                        <input type="number" id="deductions1" name="deductions[]" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <b><label for="document1">Upload Corresponding Documents</label></b>
+                        <div id="docs1" class="docs-container">
+                            <div class="document-upload" style="display: inline;">
+                                <p>Document Title: 
+                                    <input type="text" id="documentTitle1" name="documentTitle1[]" style="width: 15%;">
+                                    <input type="file" id="documentUpload1" name="documentUpload1[]" accept="application/pdf" style="width: 20%;">
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="add-more-doc-btn" onclick="addDocumentEntry(1)">Add More</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="add-more-btn" onclick="addEntry()">Add More</button>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+and php used in it is submit_form.php as <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="banner"><a href="http://localhost/_Project/Asset%20Register/land.html">
+        <h1 style="display: inline-block;">CSIR - National Institute of Science Communication and Policy Research</h1>
+    </a>    
+    </div>
+    <div class="container">
+        <h2 class="main-heading">Submitted!!</h2>
+        <?php
+// Error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Check if form data is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Database connection settings
+    $servername = "localhost"; // Replace with your server name if different
+    $username = "root"; // Replace with your database username
+    $password = ""; // Replace with your database password
+    $dbname = "assets"; // Replace with your database name
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and bind SQL statement
+    $stmt = $conn->prepare("INSERT INTO asset_entry (startDate, openingBalance, institutionType, transactionDate, particularsAsset, supplierName, supplierAddress, billNo, billDate, additions, deductions, billUpload) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    // Check if statement preparation was successful
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    // Set common parameters from POST data
+    $startDate = $_POST['startDate'];
+    $openingBalance = $_POST['openingBalance'];
+    $institutionType = $_POST['institutionType'];
+
+    // Loop through each entry
+    $entriesCount = count($_POST['transactionDate']);
+    for ($i = 0; $i < $entriesCount; $i++) {
+        $transactionDate = $_POST['transactionDate'][$i];
+        $particularsAsset = $_POST['particularsAsset'][$i];
+        $supplierName = $_POST['supplierName'][$i];
+        $supplierAddress = $_POST['supplierAddress'][$i];
+        $billNo = $_POST['billNo'][$i];
+        $billDate = $_POST['billDate'][$i];
+        $additions = $_POST['additions'][$i];
+        $deductions = $_POST['deductions'][$i];
+
+        // Handle file upload (if any)
+        $billUploads = array();
+        $fileInputName = "documentUpload" . ($i + 1);
+        $titleInputName = "documentTitle" . ($i + 1);
+        if (isset($_FILES[$fileInputName])) {
+            $documentTitles = $_POST[$titleInputName];
+            $documentUploads = $_FILES[$fileInputName];
+
+            foreach ($documentUploads['name'] as $fileIndex => $fileName) {
+                $fileTmpPath = $documentUploads['tmp_name'][$fileIndex];
+                $fileError = $documentUploads['error'][$fileIndex];
+
+                // Check if the file is uploaded without errors
+                if ($fileError === UPLOAD_ERR_OK) {
+                    $uploadDir = 'uploads/';
+                    $newFileName = $documentTitles[$fileIndex] . '_' . basename($fileName);
+                    $filePath = $uploadDir . $newFileName;
+
+                    // Move the file to the desired directory
+                    if (move_uploaded_file($fileTmpPath, $filePath)) {
+                        $billUploads[] = $filePath;
+                        echo "File uploaded successfully: $filePath<br>";
+                    } else {
+                        echo "Error moving file: " . $fileName . "<br>";
+                    }
+                } else {
+                    echo "Error with file upload: " . $fileError . "<br>";
+                }
+            }
+        } else {
+            echo "No files to upload for entry $i<br>";
+        }
+
+        // Bind parameters and execute SQL statement for each entry
+        $billUploadsStr = implode(',', $billUploads);
+        $stmt->bind_param("sdssssssssss", $startDate, $openingBalance, $institutionType, $transactionDate, $particularsAsset, $supplierName, $supplierAddress, $billNo, $billDate, $additions, $deductions, $billUploadsStr);
+        
+        if ($stmt->execute()) {
+            echo "Entry " . ($i + 1) . " Registered Successfully<br>";
+        } else {
+            echo "Error: " . $stmt->error . "<br>";
+        }
+    }
+
+    // Close statement and database connection
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "Form data not submitted.";
+}
+?>
+<br><br>
+<a href='http://localhost/_Project/Asset%20Register/asset.html'><button class = 'enter' style = "align-content:center;">Enter Again</button></a>
+<a href='http://localhost/_Project/Asset%20Register/report.html'><button class = 'enter' style = "align-content:center;">View Report</button></a>
+
+    </div>    
+</body>
+</html>
+and some javascript used is in scripts.js as // let entryCount = 1;
+
+// function addEntry() {
+//     entryCount++;
+//     const newEntry = document.createElement('div');
+//     newEntry.className = 'entry';
+//     newEntry.innerHTML = `
+//         <h3>Entry No ${entryCount}</h3>
+//         <div class="form-group">
+//             <label for="transactionDate${entryCount}">Transaction Date:</label>
+//             <input type="date" id="transactionDate${entryCount}" name="transactionDate[]" >
+//         </div>
+//         <div class="form-group">
+//             <label for="particularsAsset${entryCount}">Particulars of Asset:</label>
+//             <input type="text" id="particularsAsset${entryCount}" name="particularsAsset[]" >
+//         </div>
+//         <div class="form-group">
+//             <h4>Particulars of Suppliers</h4>
+//             <label for="supplierName${entryCount}">Name:</label>
+//             <input type="text" id="supplierName${entryCount}" name="supplierName[]" >
+//             <label for="supplierAddress${entryCount}">Address:</label>
+//             <input type="text" id="supplierAddress${entryCount}" name="supplierAddress[]">
+//             <label for="billNo${entryCount}">Bill No.:</label>
+//             <input type="text" id="billNo${entryCount}" name="billNo[]" >
+//             <label for="billDate${entryCount}">Bill Date:</label>
+//             <input type="date" id="billDate${entryCount}" name="billDate[]" >
+//         </div>
+//         <div class="form-group">
+//             <h4>Cost of Asset</h4>
+//             <label for="additions${entryCount}">Additions:</label>
+//             <input type="number" id="additions${entryCount}" name="additions[]" step="0.01" >
+//             <label for="deductions${entryCount}">Deductions:</label>
+//             <input type="number" id="deductions${entryCount}" name="deductions[]" step="0.01">
+//         </div>
+//         <div class="form-group">
+//                         <b><label for = "document${entryCount}">Upload Corresponding Documents </label></b>
+//                         <div id="docs1" class="docs-container">
+//                             <div class="document-upload" style="display: inline;">
+//                                 <p>Document Title: 
+//                                     <input type="text" id="documentTitle${entryCount}" name="documentTitle[]" style="width: 15%;">
+//                                     <input type="file" id="documentUpload${entryCount}" name="documentUpload[]" accept="application/pdf" style="width: 20%;">
+//                                 </p>
+//                             </div>
+//                         </div>
+//                         <button type="button" class="add-more-doc-btn" onclick="addDocumentEntry(1)">Add More</button>
+//         </div>
+        
+//     `;
+//     document.getElementById('entries').appendChild(newEntry);
+// }
+let entryCount = 1;
+
+function addEntry() {
+    entryCount++;
+    const newEntry = document.createElement('div');
+    newEntry.className = 'entry';
+    newEntry.innerHTML = `
+        <h3>Entry No ${entryCount}</h3>
+        <div class="form-group">
+            <label for="transactionDate${entryCount}">Transaction Date:</label>
+            <input type="date" id="transactionDate${entryCount}" name="transactionDate[]" >
+        </div>
+        <div class="form-group">
+            <label for="particularsAsset${entryCount}">Particulars of Asset:</label>
+            <input type="text" id="particularsAsset${entryCount}" name="particularsAsset[]" >
+        </div>
+        <div class="form-group">
+            <h4>Particulars of Suppliers</h4>
+            <label for="supplierName${entryCount}">Name:</label>
+            <input type="text" id="supplierName${entryCount}" name="supplierName[]" >
+            <label for="supplierAddress${entryCount}">Address:</label>
+            <input type="text" id="supplierAddress${entryCount}" name="supplierAddress[]">
+            <label for="billNo${entryCount}">Bill No.:</label>
+            <input type="text" id="billNo${entryCount}" name="billNo[]" >
+            <label for="billDate${entryCount}">Bill Date:</label>
+            <input type="date" id="billDate${entryCount}" name="billDate[]" >
+        </div>
+        <div class="form-group">
+            <h4>Cost of Asset</h4>
+            <label for="additions${entryCount}">Additions:</label>
+            <input type="number" id="additions${entryCount}" name="additions[]" step="0.01" >
+            <label for="deductions${entryCount}">Deductions:</label>
+            <input type="number" id="deductions${entryCount}" name="deductions[]" step="0.01">
+        </div>
+        <div class="form-group">
+            <b><label for="document${entryCount}">Upload Corresponding Documents</label></b>
+            <div id="docs${entryCount}" class="docs-container">
+                <div class="document-upload" style="display: inline;">
+                    <p>Document Title: 
+                        <input type="text" id="documentTitle${entryCount}" name="documentTitle${entryCount}[]" style="width: 15%;">
+                        <input type="file" id="documentUpload${entryCount}" name="documentUpload${entryCount}[]" accept="application/pdf" style="width: 20%;">
+                    </p>
+                </div>
+            </div>
+            <button type="button" class="add-more-doc-btn" onclick="addDocumentEntry(${entryCount})">Add More</button>
+        </div>
+    `;
+    document.getElementById('entries').appendChild(newEntry);
+}
+
+function addDocumentEntry(entryNumber) {
+    const docsContainer = document.getElementById(`docs${entryNumber}`);
+    const newDocEntry = document.createElement('div');
+    newDocEntry.className = 'document-upload';
+    newDocEntry.style.display = 'inline';
+    newDocEntry.innerHTML = `
+        <p>Document Title: 
+            <input type="text" name="documentTitle${entryNumber}[]" style="width: 15%;">
+            <input type="file" name="documentUpload${entryNumber}[]" accept="application/pdf" style="width: 20%;">
+        </p>
+    `;
+    docsContainer.appendChild(newDocEntry);
+}
+and the styling done is in styles.css as body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    padding: 20px;
+}
+
+.banner {
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.container {
+    
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.main-heading {
+    text-align: center;
+}
+
+.description {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.entry {
+    background: #e3f2fd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.add-more-btn,
+.submit-btn {
+    padding: 10px 20px;
+    color: #fff;
+    background: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px 0;
+    
+}
+
+.add-more-btn:hover,
+.submit-btn:hover {
+    background: #4389d4;
+}
+
+.add-more-btn {
+    float: left;
+}
+
+.submit-btn {
+    display: block;
+    margin-top: 20px;
+    margin-left: 50%;
+}
+
+
+.squares {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.square {
+    width: 300px;
+    height: 200px;
+    background: #e3f2fd;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.square-left {
+    background: #d1c4e9;
+}
+
+.square-right {
+    background: #c8e6c9;
+}
+
+.square:hover {
+    transform: scale(1.05);
+}
+
+.square-content h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.square:hover {
+    background: #bbdefb;
+}
+
+.square-left:hover {
+    background: #b39ddb;
+}
+
+.square-right:hover {
+    background: #a5d6a7;
+}
+
+footer {
+    background-color: #002147;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+and the other option in the land page is to generate the report which sends us to the report page made by report.html which filters the data and requests as follows <!-- report.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Register Report</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="banner"><a href="http://localhost/_Project/Asset%20Register/land.html">
+        <h1 style="display: inline-block;">CSIR - National Institute of Science Communication and Policy Research</h1>
+    </a>    
+    </div>
+    <div class="container">
+        <h2 class="main-heading">Asset Register Report</h2>
+        <form id="reportform" action="layouttry.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="year">Mention the Year:</label>
+                <input type="number" id="year" name="year" required>
+            </div>
+            <div class="form-group">
+                <label for="institutionType">Type of Institution:</label>
+                <select id="place" name="place" required>
+                    <option value="CSIR">CSIR</option>
+                    <option value="DST">DST</option>
+                    <option value="MOES">MOES Lab</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>    
+        
+</body>
+</html>
+and requests the data and finally shows it in the form of a table by the help of webpage layouttry.php as <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+       
+        .main-heading{
+              /* font-size: 22px; */
+              text-align: center;
+             
+        }
+       </style>
+
+    <title>Layout</title>
+</head>
+<body>
+    
+                    
+    <div class="header">
+        <br><br><p style="margin:0px;left:0%; top:20px;font-size: 25px;" class="main-heading"><b>Register of Fixed Assets</b></p>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Get the start and end dates from user input
+            $year = intval($_POST['year']);
+            $start_date = "$year-04-01";
+            $end_date = ($year + 1) . "-03-31";
+            $place = $_POST['place'];
+        }
+
+        
+        echo "<div>";
+            echo "<p style='margin: 0; font-size: 19px; position: relative;left: 50px; top: 30px; display: inline;'><b>Name and Description of Fixed Asset_______</b></p>";
+            echo "<p style='margin: 0; font-size: 19px; position: relative;left: 50px; top:30px; display: inline; color:#4389d4;'><b>ELECTRONIC JOURNALS ".($year+1)." Subscription (FY ". ($year."-".(substr($year+1, -2))).")</b></p>";
+        echo "</div>";
+         ?>
+         <div>
+            <div>
+                <table id="table1" style="margin: 0; top:30px; position: relative; left: 50px; width: 95% ; height: 50% ;" >
+                    <style>
+                        table {
+                            border-collapse: collapse;
+                        }
+            
+                        th,
+                        td {
+                            border: 1px solid black;
+                            padding: 8px;
+                            font-size: 16px;
+                        }
+                    </style>
+                    
+                    <tr style="text-align: center;">
+                        <th rowspan="2" style="width: 75px;"><b>Date</b></th>
+                        <th rowspan="2" style="width: 75px;"><b>Opening Balance</b></th>
+                        <th rowspan="2" style="width: 120px;"><b>Particulars of Asset</b></th>
+                        <th colspan="2"><b>Particulars of Suppliers</b></th>
+                        <th rowspan="2" style="width: 115px;"><b>Location of Asset</b></th>
+                        <th colspan="2"><b>Cost of the Asset</b></th>
+                        <th rowspan="2" style="width: 125px;"><b>Progressive Expenditure/  <br>Closing Balance<br>9=2+7-8</b></th>
+                        <th rowspan="2" style="width: 135px;"><b></b></th>
+                        <th rowspan="2" style="width: 135px;"><b></b></th>
+                        <th rowspan="2" style="width: 135px;"><b>Remarks</b></th>
+                        
+                    </tr>
+                    <tr style="text-align: center;">
+                        <td style="width: 75px;"><b>Name and Address</b></td>
+                        <td style="width: 140px;"><b>Bill No. and Date</b></td>
+                        <td style="width: 140px;"><b>Additions</b></td>
+                        <td style="width: 120px;"><b>Deductions</b></td>
+                    </tr>
+                    <tr style="text-align: center;" >
+                        <td><b>1</b></td>
+                        <td><b>2</b></td>
+                        <td><b>3</b></td>
+                        <td><b>4</b></td>
+                        <td><b>5</b></td>
+                        <td><b>6</b></td>
+                        <td><b>7</b></td>
+                        <td><b>8</b></td>
+                        <td><b>9</b></td>
+                        <td><b>10</b></td>
+                        <td><b>11</b></td>
+                        <td><b>12</b></td>
+                    </tr></b>
+                    <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        // Get the start and end dates from user input
+                        $year = intval($_POST['year']);
+                        $start_date = "$year-04-01";
+                        $end_date = ($year + 1) . "-03-31";
+                        $place = $_POST['place'];
+                    
+                        
+                        
+                        // Database connection details
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "assets";
+
+                        // Create connection
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+
+                        // Check connection
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+
+                        
+                        // $sql = "SELECT DATE_FORMAT(transactionDate, '%d-%m-%Y') AS transactionDate, DATE_FORMAT(startDate, '%d-%m-%Y') AS startDate, openingBalance, particularsAsset, supplierName, supplierAddress, billNo, DATE_FORMAT(billDate, '%d-%m-%Y') AS billDate, institutionType, additions, deductions, progressiveExpenditure, billUpload FROM asset_entry WHERE institutionType = ? AND transactionDate BETWEEN ? AND ? ORDER BY transactionDate ASC ";
+                                                                $sql = "SELECT 
+                                                transactionDate, 
+                                                startDate, 
+                                                openingBalance, 
+                                                particularsAsset, 
+                                                supplierName, 
+                                                supplierAddress, 
+                                                billNo, 
+                                                billDate, 
+                                                institutionType, 
+                                                additions, 
+                                                deductions, 
+                                                progressiveExpenditure, 
+                                                billUpload 
+                                            FROM asset_entry 
+                                            WHERE institutionType = ? 
+                                            AND transactionDate BETWEEN ? AND ? 
+                                            ORDER BY transactionDate ASC ";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("sss", $place, $start_date, $end_date);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        $commonStartDate = null;
+                        $commonOpeningBalance = null;
+                        $lastTxDate = null;
+                        $firstRow = true;
+                        $totalExpend = null;
+                        $carrier = null;
+
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                if ($firstRow) {
+                                    $commonStartDate = date('d-m-Y', strtotime($row["startDate"])) ;
+                                    $commonOpeningBalance = $row["openingBalance"];
+                                    $firstRow = false;
+
+                                    echo "<tr>";
+                                    echo "<td><b>". $commonStartDate . "</b></td>";
+                                    echo "<td><b>". $commonOpeningBalance . "</b></td>";
+                                    echo "<td colspan='3'><b> OPENING BALANCE (B/F " . ($year - 1) . "-" . $year . ")</b></td>";
+                                    echo "<td></td><td></td><td></td><td></td><td></td><td></td><td></td>";
+                                    echo "<b></tr>";
+                                }
+                                $lastTxDate = date('d-m-Y', strtotime($row["transactionDate"])) ;
+                                $totalExpend = $totalExpend + $row["additions"] - $row["deductions"];
+                                $carrier = $totalExpend+$commonOpeningBalance;
+                                $billUploads = explode(',', $row["billUpload"]);
+
+
+
+                                echo "<tr>";
+                                echo "<td>" . date('d-m-Y', strtotime($row["transactionDate"])) . "</td>";
+                                echo "<td></td>";
+                                echo "<td style='color: #4389d4'>" . $row["particularsAsset"] . "</td>";
+                                echo "<td style='color: #4389d4'>" . $row["supplierName"] . "<br>" . $row["supplierAddress"] . "</td>";
+                                echo "<td style='color: #4389d4'>" . $row["billNo"] . "<br>" .date('d-m-Y', strtotime($row["billDate"])). "</td>";
+                                // to add the bill no as a hyperlink:-
+                                // echo "<td style='color: #4389d4'>" . ($row["billUpload"] ? "<a href='" . $row["billUpload"] . "' target='_blank'>" . $row["billNo"] . "</a>" : $row["billNo"]) . "<br>" . $row["billDate"] . "</td>";
+                                echo "<td style='color: #4389d4'> Across identified " . $row["institutionType"] . " Labs </td>";
+                                echo "<td>" . $row["additions"] . "</td>";
+                                echo "<td>" . $row["deductions"] . "</td>";
+                                echo "<td>" . $carrier . "</td>";
+                                echo "<td >";
+                                     foreach ($billUploads as $billUpload) {
+                                        echo "<a href='" . $billUpload . "' target='_blank'>View PDF </a><br>";
+                                      }
+                                echo  "</td>";
+                                echo "<td></td>";
+                                echo "<td></td>";
+                                echo "</tr>";
+                                
+
+                            }
+                        } else {
+                            echo "<tr><td colspan='9'>No data found</td></tr>";
+                        }
+
+
+                        $conn->close();
+                    }
+                    echo "
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>";
+                    
+                    echo "
+                    <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th colspan = '3'style='color: #4389d4'><b>Total Expenditure ". $year."-".(substr($year+1, -2))." Rs.</b></th>
+                    <th><b>" . $totalExpend . "</b></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    </tr>";
+                    
+                    echo "
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th><b>As on " .$lastTxDate. "</b></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th><b>".($commonOpeningBalance + $totalExpend)." </b></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>";
+                    
+                    ?>
+                    
+
+
+                    
+                </table>
+            </div>
+            <div>
+                <br><p style='margin: 0; font-size: 15px; position: relative;left: 50px; top: 30px; display: inline;'>
+                    NB:-
+                </p>
+                <p style='margin: 0; font-size: 15px; position: relative;left: 120px; top: 30px; display: inline;'>
+                    1. Separate register be maintained for each category of asset(capital budget head).
+                </p>
+                <br>
+                
+                <p style='margin: 0; font-size: 15px; position: relative;left: 154px; top: 30px; display: inline;'>
+                    2. At the close of the financial year, the balance in the Assets Register must match with the balance under Gross Block of Schedule 6 excluding figures of Works in Progress.
+                </p>
+            </div>
+
+
+
+        </div>
+        
+
+        
+
+
+
+    </div>
+    
+</body>
+</html>
+ i want a login and sign up model basically like a authorization model like if someone were to open up our land page and tried to opt for any of the two options so first we would check if the user is signed in , if yes then he may proceed further and if no then he must be sent to a login webpage where we will ask for the user id and password like a typical authorization model and below that we will give a sign up option too for be it a new user . So create this , an authorization model that doesnt permits the user to go further than the land page and asks for user id and password and when entered , he shall be directed back to the land page and there must be a small icon and option on the top right corner where if user has logged in , so we must be able to see that , by showing his user id and his mini photograph which can be any logo or default photo and on clicking on it we must get an option to log out and if he or she clicks it , they may get logged out and again land page must appear, and if not signed in , then it must show sign in option and on clicking it , we must be directed to the login page. The login page must show some resemblence to our webpages and must look a little crafty , beautiful and professional.
